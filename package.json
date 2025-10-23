@@ -1,0 +1,19 @@
+{
+  "name": "formula1-website",
+  "version": "1.0.0",
+  "description": "A comprehensive Formula 1 website with React frontend and Node.js backend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "keywords": ["formula1", "f1", "react", "nodejs", "express", "mongodb"],
+  "author": "Formula 1 Website",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,215 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--primary-black);
+  border-bottom: 2px solid var(--primary-red);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-white);
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--primary-red);
+  transform: scale(1.05);
+}
+
+.brand-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.brand-text {
+  background: linear-gradient(45deg, var(--primary-red), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar-link {
+  color: var(--text-white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar-link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-red);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-link:hover::before,
+.navbar-link.active::before {
+  width: 100%;
+}
+
+.navbar-link:hover {
+  color: var(--primary-red);
+  background-color: rgba(225, 6, 0, 0.1);
+}
+
+.navbar-link.active {
+  color: var(--primary-red);
+  background-color: rgba(225, 6, 0, 0.1);
+}
+
+.navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary-red);
+  color: var(--text-white);
+  transform: scale(1.1);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  gap: 4px;
+}
+
+.hamburger {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-white);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.menu-toggle:hover .hamburger {
+  background-color: var(--primary-red);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar-menu {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-black);
+    border-top: 2px solid var(--primary-red);
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-link {
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--border-gray);
+  }
+
+  .navbar-link:last-child {
+    border-bottom: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .menu-toggle.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .brand-icon {
+    font-size: 1.5rem;
+    margin-right: 8px;
+  }
+
+  .navbar-content {
+    padding: 10px 0;
+  }
+}
